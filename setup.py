@@ -11,7 +11,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="pysfg",
-    version="0.0.1",
+    version="0.0.2",
     author="秋纫",
     author_email="qrqiuren@users.noreply.github.com",
     description="A Python package for symbolic signal flow graph analysis.",
