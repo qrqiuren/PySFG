@@ -2,6 +2,8 @@
 
 # Symbolic Transfer Function Solver for Signal Flow Graphs
 #
-# Author: Huang Hongye
+# Author: 秋纫
 
-name = "pysfg"
+from .pysfg import SignalFlowGraph
+
+__all__ = ['SignalFlowGraph']

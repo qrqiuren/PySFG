@@ -6,9 +6,7 @@
 
 from sympy import S
 
-import pytest
-
-from pysfg.pysfg import SignalFlowGraph
+from pysfg import SignalFlowGraph
 
 graph_path = 'test/test_sfgs/'
 
