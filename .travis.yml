@@ -10,8 +10,9 @@ install:
 
 # Command to run tests
 script:
+  - python setup.py develop
   - pytest
 
 deploy:
   provider: pypi
-  user: "__token__"
+  user: "qrqiuren"
