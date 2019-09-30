@@ -1,0 +1,40 @@
+# A primitive analog PLL system
+
+sources:
+  - φ_ref
+  - vn_pfd
+  - vn_lf
+  - φn_vco
+  - φn_div
+
+sinks:
+  - φ_out
+
+nodes:
+  - φ_div
+  - φ_err
+  - v_pfd
+  - v_vco
+
+edges:
+
+  # PFD
+  φ_ref ~> φ_err: 1
+  φ_div ~> φ_err: -1
+  φ_err ~> v_pfd: K_pfd
+  vn_pfd ~> v_pfd: 1
+
+  # LF
+  # v_pfd ~> v_vco: K_i / s + K_p
+  v_pfd ~> v_vco: H_lf
+  vn_lf ~> v_vco: 1
+  # v_vco ~> v_pfd: 1 / 1000
+
+  # VCO
+  v_vco ~> φ_out: K_vco
+  φn_vco ~> φ_out: 1
+
+  # DIV
+  φ_out ~> φ_div: 1 / N
+  φn_div ~> φ_div: 1
+

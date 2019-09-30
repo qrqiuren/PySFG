@@ -1,0 +1,78 @@
+# The modularized SFG YAML is not supported at this time.
+# Please use only one module in an SFG.
+
+top_module: TOP_PLL
+
+modules:
+  - PD:
+      sources:
+        - φ_inp
+        - φ_inn
+      sinks:
+        - v_out
+      nodes:    # Intermediate nodes that are neither source nor sink
+        - pd_sum
+      edges:
+        - φ_inp ~> pd_sum: 1
+        - φ_inn ~> pd_sum: -1
+        - pd_sum ~> v_out: K_pd
+
+  - LF:
+      sources:
+        - v_in
+      sinks:
+        - v_out
+      edges:
+        - v_in ~> v_out: (K_i / s + 1) / K_p
+  
+  - VCO:
+      # Voltage-controlled oscillator
+      sources:
+        - v_in
+      sinks:
+        - φ_out
+      edges:
+        - v_in ~> φ_out: K_vco / s
+
+  - DIV:
+      # Divider
+      sources:
+        - φ_in
+      sinks:
+        - φ_out
+      edges:
+        - φ_in ~> φ_out: 1 / N
+
+  - TOP_PLL:
+      # Top module of the PLL
+      sources:
+        - φ_ref
+      sinks:
+        - φ_out
+      nodes:
+        - v_pd
+        - v_vco
+        - φ_div
+      submodules:
+        - u_pd:
+            type: PD
+            ports:
+              - φ_inp: φ_ref
+              - φ_inn: φ_div
+              - v_out: v_pd
+        - u_lf:
+            type: LF
+            ports:
+              - v_in: v_pd
+              - v_out: v_vco
+        - u_vco:
+            type: VCO
+            ports:
+              - v_in: v_vco
+              - φ_out: φ_out
+        - u_div:
+            type: DIV
+            ports:
+              - φ_in: φ_out
+              - φ_out: φ_div
+
