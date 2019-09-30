@@ -1,12 +1,18 @@
 language: python
+
 python:
 - '3.6'
 - '3.7'
+
+# Run command before install
 install:
 - pip install sympy strictyaml networkx
+
+# Run command for testing
 script:
 - python setup.py develop
 - pytest
+
 deploy:
   provider: pypi
   user: __token__
