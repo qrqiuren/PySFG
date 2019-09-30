@@ -82,9 +82,9 @@ class SignalFlowGraph:
         gain = 0
         for path in paths:
             # Calculate the path gain
-            path_gain = 0
+            path_gain = 1
             for i in range(len(path) - 1):
-                path_gain += self.graph.edges[path[i], path[i+1]]['expr']
+                path_gain *= self.graph.edges[path[i], path[i+1]]['expr']
 
             # Calculate the path's cofactor
             nontouching_cycles = []
