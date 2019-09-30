@@ -19,8 +19,7 @@ class SignalFlowGraph:
 
     Usage
     -----
-    >>> sfg = SignalFlowGraph('test/test_sfgs/mason56fig5a.yml')
-    >>> sfg.find_graph_gain('1', '6')
+    TODO
     """
     def __init__(self, filename):
         """
@@ -128,8 +127,8 @@ class SignalFlowGraph:
 
 
 if __name__ == '__main__':
-    # sfg = SignalFlowGraph('example_sfg/pll_single.yml')
-    # print(sfg.find_graph_gain('φ_ref', 'φ_out').simplify())
-    # print(sfg.find_graph_gain_to('φ_out'))
-    import doctest
-    doctest.testmod()
+    sfg = SignalFlowGraph('example_sfg/pll_single.yml')
+    print(sfg.find_graph_gain('φ_ref', 'φ_out'))
+    print(sfg.find_graph_gain_to('φ_out'))
+    # import doctest
+    # doctest.testmod()
