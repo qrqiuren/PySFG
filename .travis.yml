@@ -1,18 +1,14 @@
 language: python
 python:
-  - "3.6"
-  - "3.7"
-  # - "3.8"
-
-# Command to install dependencies
+- '3.6'
+- '3.7'
 install:
-  - pip install sympy strictyaml networkx
-
-# Command to run tests
+- pip install sympy strictyaml networkx
 script:
-  - python setup.py develop
-  - pytest
-
+- python setup.py develop
+- pytest
 deploy:
   provider: pypi
-  user: "qrqiuren"
+  user: "__token__"
+  password:
+    secure: feCzWGwH4zsQSdH7SWiKAwRJo1L/mj9Ky1dJNi37wdm1cZhdpa2qOZu+niB8o/XwiE+KgGMdY6skMQJyH2WiaXSK3LLA9T6rsVoKfBXXF1lAD3oU49MKddjVB86D+PVGS0VTsub+EEBTZtO4U42n3dODzQ0kE7JqC4V25h+u+Iqadhfx/QC/hBk3frT1qT5yZeFmrldwXDLrkklHFRhuHl9PrugHzHIrqxoB2CmR9ydhyQPlP3P2Kmxt2e/pPAWdrnGKVQ6fKK50lRu0HLmNj5dYErZDjIfWK1zT/JMT//tuTsBlIPcFslO0MuSsEGaJwH4DO/YQS0wFaiTODCSkfsiOgVmku3XIhDpVaRGfBWDDIY0HVxQdYat88bG3OMTVGKJO014Q0MHmbFlViOhx344F1ejazYztrBG1ywVDqFGHGfU2+7SJ95AwXOoGWPlueYv+r533gvigpxV3Qj5/HSTK7BVeaiHd7OOKr3OtSvo7Ac+fJrWvlEcjUO4POyNAWVgXBpCVGhwnkM1vKWE71O0tuWA3n1PogjOmRXSz8+Tt066/l4x8LQVfz9pMJubQNqpo/uaicTOnu/uGgSlvsz2rzMiL9L4IJm1qKG/HdVoNNzI4gAGFjcRX19b4czXqHdqcrhV/HeR4DMPWbWK0DPKDHDicx5tCRB1m01Z9LAU=
