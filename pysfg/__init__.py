@@ -4,4 +4,4 @@
 #
 # Author: Huang Hongye
 
-name = "flowgraph"
+name = "pysfg"
