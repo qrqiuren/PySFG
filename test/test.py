@@ -10,7 +10,7 @@ import pytest
 
 from pysfg.pysfg import SignalFlowGraph
 
-graph_path = 'test_sfgs/'
+graph_path = 'test/test_sfgs/'
 
 
 class TestSignalFlowGraph:
@@ -32,3 +32,16 @@ class TestSignalFlowGraph:
         gain_paper = S('(a*b*c + d*(1-b*f))/(1-a*e-b*f-c*g-d*g*f*e+a*e*c*g)')
         assert gain_sfg == gain_paper
 
+    def test_mason56fig6a(self):
+        """Test Fig. 6(a) of [Mason'56]."""
+        sfg = SignalFlowGraph(graph_path + 'mason56fig6a.yml')
+        gain_sfg = sfg.find_graph_gain('1', '4')
+        gain_paper = S('(d*(1 - b*e) + a*b*c)/(1 - b*e)')
+        assert gain_sfg == gain_paper
+
+    def test_mason56fig6e(self):
+        """Test Fig. 6(e) of [Mason'56]."""
+        sfg = SignalFlowGraph(graph_path + 'mason56fig6e.yml')
+        gain_sfg = sfg.find_graph_gain('x1', 'y1')
+        gain_paper = S('(g*(1-h*i-j*c-h*b*c*d+h*i*j*c)+a*i*e*(1-j*c)+a*b*c*d*e)/(1-f*g-h*i-j*c-f*a*i*e-h*b*c*d-f*a*b*c*d*e+f*g*h*i+f*g*j*c+h*i*j*c+f*a*i*e*j*c+f*g*h*b*c*d-f*g*h*i*j*c)')
+        assert gain_sfg == gain_paper
