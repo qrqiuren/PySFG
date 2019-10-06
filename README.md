@@ -52,7 +52,6 @@ sinks:
 nodes:
     - V1
     - I1
-    - V2
     - I2
 
 # Define edges
