@@ -1,0 +1,33 @@
+# Example signal flow graph of a two-port system
+#
+# Author: 秋纫
+
+# The `#` symbol starts a line of comment
+
+# Define source nodes, sink nodes and other nodes
+sources:
+    - Vin
+sinks:
+    - V2    # We can use V2 directly as the sink node
+nodes:
+    - V1
+    - I1
+    - V2
+    - I2
+
+# Define edges
+# Each edge has a format of `u ~> v: f`, where the edge points from node `u`
+# to node `v`, with a transfer function of `f`. `f` is convertible to a
+# SymPy expression.
+edges:
+    Vin ~> V1: 1    # Constants are acceptable
+
+    # Admittance matrix
+    V1 ~> I1: y11   # Symbols are acceptable
+    V2 ~> I1: y12
+    V1 ~> I2: y21
+    V2 ~> I2: y22
+
+    # Impedances
+    I1 ~> V1: -Rin  # Expressions are acceptable
+    I2 ~> V2: -RL
