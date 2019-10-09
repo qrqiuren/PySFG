@@ -23,7 +23,7 @@ $ pip install pysfg
 ### For Hackers
 
 ```bash
-$ git checkout https://github.com/qrqiuren/PySFG.git
+$ git clone https://github.com/qrqiuren/PySFG.git
 $ cd PySFG
 $ python setup.py develop
 ```
