@@ -21,7 +21,7 @@ class SignalFlowGraph:
     -----
     TODO
     """
-    def __init__(self, filename):
+    def __init__(self, filename, clash=_clash):
         """
         Initializes a signal flow graph.
 
@@ -51,7 +51,7 @@ class SignalFlowGraph:
             if from_node == to_node:
                 print('Error: Selfloop detected at node ' + from_node)
                 exit(1)
-            self.graph.add_edge(from_node, to_node, expr=S(tf, _clash))
+            self.graph.add_edge(from_node, to_node, expr=S(tf, clash))
 
         # Find cycles and their gains in the graph
         self.cycles = list(map(lambda x: tuple(x),
