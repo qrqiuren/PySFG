@@ -19,6 +19,7 @@ setuptools.setup(
     long_description_content_type="text/markdown",
     url="https://github.com/qrqiuren/PySFG",
     packages=setuptools.find_namespace_packages(),
+    install_requires=["strictyaml", "networkx","sympy"],
     classifiers=[
         "Development Status :: 2 - Pre-Alpha",
         "Intended Audience :: Science/Research",
